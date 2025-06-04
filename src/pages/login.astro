@@ -1,0 +1,78 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Form from '../components/ui/Form.astro';
+import Input from '../components/ui/Input.astro';
+import Button from '../components/ui/Button.astro';
+import Alert from '../components/ui/Alert.astro';
+import { getUserFromRequest } from '../utils/session';
+
+// Redirigir si ya está logueado
+const user = getUserFromRequest(Astro.request);
+if (user) {
+  return Astro.redirect(user.role === 'admin' ? '/admin' : '/dashboard');
+}
+
+// Obtener mensajes de error o éxito de la URL
+const urlParams = new URLSearchParams(new URL(Astro.request.url).search);
+const error = urlParams.get('error');
+const message = urlParams.get('message');
+---
+
+<Layout title="Iniciar Sesión - Mi App" description="Inicia sesión en tu cuenta">
+  <div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8">
+      <div>
+        <div class="mx-auto h-12 w-12 bg-blue-600 rounded-lg flex items-center justify-center">
+          <span class="text-white font-bold text-lg">MA</span>
+        </div>
+        <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Iniciar Sesión</h2>
+        <p class="mt-2 text-center text-sm text-gray-600">Ingresa tus credenciales para acceder</p>
+      </div>
+
+      {
+        error && (
+          <Alert type="error" title="Error">
+            {error === 'invalid' && 'Usuario o contraseña incorrectos'}
+            {error === 'required' && 'Todos los campos son obligatorios'}
+            {error === 'server' && 'Error del servidor. Intenta nuevamente'}
+          </Alert>
+        )
+      }
+
+      {message && <Alert type="success">{message}</Alert>}
+
+      <Form action="/api/auth/login" method="POST" class="mt-8 space-y-6">
+        <div class="space-y-4">
+          <Input
+            name="userName"
+            type="text"
+            label="Nombre de Usuario"
+            placeholder="Ingresa tu usuario"
+            required={true}
+          />
+
+          <Input
+            name="password"
+            type="password"
+            label="Contraseña"
+            placeholder="Ingresa tu contraseña"
+            required={true}
+          />
+        </div>
+
+        <div>
+          <Button type="submit" variant="primary" class="w-full"> Iniciar Sesión </Button>
+        </div>
+
+        <div class="text-center">
+          <p class="text-sm text-gray-600">
+            ¿No tienes cuenta?
+            <a href="/register" class="font-medium text-blue-600 hover:text-blue-500">
+              Regístrate aquí
+            </a>
+          </p>
+        </div>
+      </Form>
+    </div>
+  </div>
+</Layout>

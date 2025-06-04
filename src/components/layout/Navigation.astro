@@ -1,0 +1,25 @@
+---
+const pathname = Astro.url.pathname;
+
+const navItems = [
+  { name: 'Inicio', href: '/' },
+  { name: 'Log In', href: '/login' },
+];
+---
+
+<nav class="hidden md:flex space-x-8">
+  {
+    navItems.map((item) => (
+      <a
+        href={item.href}
+        class={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
+          pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href))
+            ? 'text-blue-600 bg-blue-50'
+            : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
+        }`}
+      >
+        {item.name}
+      </a>
+    ))
+  }
+</nav>

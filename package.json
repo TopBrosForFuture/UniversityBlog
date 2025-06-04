@@ -11,12 +11,16 @@
     "format": "prettier . --write"
   },
   "dependencies": {
+    "@astrojs/db": "^0.15.0",
+    "@astrojs/sitemap": "^3.4.1",
     "@tailwindcss/vite": "^4.1.8",
     "astro": "^5.8.1",
+    "bcryptjs": "^3.0.2",
     "tailwindcss": "^4.1.8"
   },
   "devDependencies": {
     "@eslint/js": "^9.28.0",
+    "@types/bcryptjs": "^3.0.0",
     "@typescript-eslint/eslint-plugin": "^8.33.0",
     "@typescript-eslint/parser": "^8.33.0",
     "astro-eslint-parser": "^1.2.2",

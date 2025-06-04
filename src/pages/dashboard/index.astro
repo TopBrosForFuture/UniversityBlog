@@ -1,0 +1,45 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getUserFromRequest } from '../../utils/session';
+
+const user = getUserFromRequest(Astro.request);
+
+if (!user) {
+  return Astro.redirect('/login');
+}
+
+// Los users no pueden acceder al admin
+if (user.role === 'admin') {
+  return Astro.redirect('/admin');
+}
+---
+
+<Layout title="Dashboard - Mi App">
+  <div class="min-h-screen bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center py-6">
+          <h1 class="text-3xl font-bold text-gray-900">Mi Dashboard</h1>
+          <div class="flex items-center space-x-4">
+            <span class="text-sm text-gray-700">Hola, {user.nombre}</span>
+            <form action="/api/auth/logout" method="POST" class="inline">
+              <button type="submit" class="text-sm text-red-600 hover:text-red-500">
+                Cerrar Sesión
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <main class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+      <div class="px-4 py-6 sm:px-0">
+        <div class="bg-white shadow rounded-lg p-6">
+          <h2 class="text-xl font-semibold text-gray-900 mb-4">Bienvenido a tu Dashboard</h2>
+        </div>
+      </div>
+    </main>
+  </div>
+</Layout>
