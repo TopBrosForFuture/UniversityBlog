@@ -1,0 +1,56 @@
+---
+// Recibir props desde el componente padre
+export interface Props {
+  items: Array<{
+    img: string;
+    text: string;
+    text_URL: string;
+  }>;
+  textColor?: string;
+}
+
+const { items, textColor = "text-[#030A8C]" } = Astro.props; // ← Agregué textColor aquí
+---
+
+<div class="flex justify-center items-center gap-4 my-8">
+  {items.map((item, index) => (
+    <div
+      class="image-slide transition-all duration-700 ease-in-out transform scale-100 opacity-50"
+      data-index={index}
+    >
+      <a href={item.text_URL ?? "#"} target="_blank" rel="noopener noreferrer">
+        <img src={item.img} alt={item.text} class="w-60 h-60 object-contain rounded-xl shadow-lg" />
+      </a>
+      <p class={`text-center mt-2 ${textColor} font-semibold`}>{item.text}</p>
+    </div>
+  ))}
+</div>
+
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const slides = document.querySelectorAll(".image-slide");
+    let active = 0;
+
+    // Función para actualizar el slide activo
+    const updateSlides = () => {
+      slides.forEach((slide, i) => {
+        slide.classList.remove("scale-110", "opacity-100", "scale-100", "opacity-50");
+        
+        if (i === active) {
+          slide.classList.add("scale-110", "opacity-100");
+        } else {
+          slide.classList.add("scale-100", "opacity-50");
+        }
+      });
+    };
+
+    // Activar el primer slide inmediatamente
+    updateSlides();
+
+    // Cambiar slides cada 3 segundos
+    setInterval(() => {
+      active = (active + 1) % slides.length;
+      updateSlides();
+    }, 3000);
+  });
+</script>
