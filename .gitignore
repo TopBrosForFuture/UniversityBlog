@@ -1,7 +1,8 @@
 node_modules
+dist/
 
 local.db
-[dist]
+dist
 .env
 .env.*
 .DS_Store
