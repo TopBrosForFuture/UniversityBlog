@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { clearSessionCookie } from '../../../utils/session';
+import { clearSessionCookie } from '../../../../utils/session';
 
 export const POST: APIRoute = async ({ redirect }) => {
   const clearCookie = clearSessionCookie();

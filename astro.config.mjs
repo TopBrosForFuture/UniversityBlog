@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import db from '@astrojs/db';
+import node from '@astrojs/node';
 
 import sitemap from '@astrojs/sitemap';
 
@@ -12,4 +13,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   output: 'server', // Necesario para las API routes y middleware
+  adapter: node({
+    mode: 'standalone',
+  }),
 });
