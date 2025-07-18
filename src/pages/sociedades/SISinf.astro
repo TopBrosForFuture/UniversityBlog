@@ -29,6 +29,7 @@ const items = [
 const noticiasAll = await db.select().from(News);
 
 const noticiasSisInf = noticiasAll.filter((noticia) => noticia.userId === 3);
+
 ---
 
 <Layout
@@ -78,12 +79,10 @@ const noticiasSisInf = noticiasAll.filter((noticia) => noticia.userId === 3);
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-3xl font-bold text-gray-900 mb-4">Noticias</h2>
-        <p class="text-gray-600 max-w-2xl mx-auto">
-          Construida con tecnologías modernas y siguiendo las mejores prácticas
-        </p>
+        <!-- Mostrar noticias de SisInf -->
+        <CardsNotices noticias={noticiasSisInf} />
       </div>
-      <!-- Mostrar noticias de SisInf -->
-      <CardsNotices noticias={noticiasSisInf} />
+
       <div class="text-center mb-16">
         <h2 class="text-3xl font-bold text-gray-900 mb-4">Nuestra Directiva</h2>
         <div class="flex flex-wrap justify-center gap-6">
@@ -210,48 +209,47 @@ const noticiasSisInf = noticiasAll.filter((noticia) => noticia.userId === 3);
                 stroke-width="2"
                 d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                Carnet de Identidad <br /> o <br />Carnet Universitario
+              </h3>
+              <p class="text-gray-600">
+                Cualquiera de los documento para poder identificarte junto con la matricula
+              </p>           
           </div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">
-            Carnet de Identidad <br /> o <br />Carnet Universitario
-          </h3>
-          <p class="text-gray-600">
-            Cualquiera de los documento para poder identificarte junto con la matricula
-          </p>
-        </div>
-
-        <div class="text-center p-6">
-          <div
-            class="w-12 h-12 bg-purple-100 rounded-lg mx-auto mb-4 flex items-center justify-center"
-          >
-            <svg
-              class="w-12 h-12 text-blue-600"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect
-                x="3"
-                y="3"
-                width="18"
-                height="18"
-                rx="2"
-                stroke-width="2"
-                stroke="currentColor"
-                fill="none"></rect>
-              <line x1="7" y1="8" x2="17" y2="8" stroke-width="2" stroke="currentColor"></line>
-              <line x1="7" y1="12" x2="17" y2="12" stroke-width="2" stroke="currentColor"></line>
-              <line x1="7" y1="16" x2="13" y2="16" stroke-width="2" stroke="currentColor"></line>
-            </svg>
-          </div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">Formulario de Inscripcion</h3>
-          <p class="text-gray-600">
-            Formulario de no participación de alguna entidad políitica y/o partidaria de algun
-            centro facultativo o de carrera
-            <br /><a class="text-blue-600 hover:underline" href="https://matricula.uto.edu.bo/">
-              Formulario de Inscripcion</a
-            >
-          </p>
+            <div class="text-center p-6">
+              <div
+                class="w-12 h-12 bg-purple-100 rounded-lg mx-auto mb-4 flex items-center justify-center"
+              >
+                <svg
+                  class="w-12 h-12 text-blue-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="3"
+                    y="3"
+                    width="18"
+                    height="18"
+                    rx="2"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"></rect>
+                  <line x1="7" y1="8" x2="17" y2="8" stroke-width="2" stroke="currentColor"></line>
+                  <line x1="7" y1="12" x2="17" y2="12" stroke-width="2" stroke="currentColor"></line>
+                  <line x1="7" y1="16" x2="13" y2="16" stroke-width="2" stroke="currentColor"></line>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Formulario de Inscripcion</h3>
+              <p class="text-gray-600">
+                Formulario de no participación de alguna entidad políitica y/o partidaria de algun
+                centro facultativo o de carrera
+                <br /><a class="text-blue-600 hover:underline" href="https://matricula.uto.edu.bo/">
+                  Formulario de Inscripcion</a
+                >
+              </p>
+            </div>
         </div>
       </div>
     </div>

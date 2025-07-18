@@ -3,8 +3,16 @@ import Layout from '../layouts/Layout.astro';
 import Button from '../components/ui/Button.astro';
 import { BRAND } from 'astro:schema';
 import Carousel from '../components/ui/Carousel.astro';
+import CardsNotices from '../components/ui/CardsNotices.astro';
 import FlipCard from '../components/ui/Target.astro';
+import { db, News, Usuarios } from 'astro:db';
+
+// Obtener noticias de SisInf desde la base de datos
+const noticiasAll = await db.select().from(News);
+
+const noticiasSisInf = noticiasAll.filter((noticia) => noticia.userId === 3);
 ---
+
 
 <Layout
   title="Inicio - Mi App Astro"
@@ -109,70 +117,10 @@ import FlipCard from '../components/ui/Target.astro';
 
         
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="text-center p-6">
-          <div
-            class="w-12 h-12 bg-blue-100 rounded-lg mx-auto mb-4 flex items-center justify-center"
-          >
-            <svg
-              class="w-6 h-6 text-blue-600"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-            </svg>
-          </div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">Rápido</h3>
-          <p class="text-gray-600">Optimizado para rendimiento con Astro</p>
-        </div>
-
-        <div class="text-center p-6">
-          <div
-            class="w-12 h-12 bg-green-100 rounded-lg mx-auto mb-4 flex items-center justify-center"
-          >
-            <svg
-              class="w-6 h-6 text-green-600"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-            </svg>
-          </div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">Confiable</h3>
-          <p class="text-gray-600">Construido con las mejores prácticas</p>
-        </div>
-
-        <div class="text-center p-6">
-          <div
-            class="w-12 h-12 bg-purple-100 rounded-lg mx-auto mb-4 flex items-center justify-center"
-          >
-            <svg
-              class="w-6 h-6 text-purple-600"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-              ></path>
-            </svg>
-          </div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">Accesible</h3>
-          <p class="text-gray-600">Diseñado para todos los usuarios</p>
-        </div>
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Noticias</h2>
+        <!-- Mostrar noticias de SisInf -->
+        <CardsNotices noticias={noticiasSisInf} />
       </div>
     </div>
   </section>
