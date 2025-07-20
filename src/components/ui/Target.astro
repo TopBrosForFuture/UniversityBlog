@@ -1,6 +1,5 @@
 ---
-// Puedes recibir props si lo deseas:
-const { name, role, email, phone, photo, facebook, linkedin } = Astro.props;
+const { name, role, biografia, email, phone, photo, } = Astro.props;
 ---
 
 <div class="w-[300px] h-[400px] perspective cursor-pointer">
@@ -13,14 +12,18 @@ const { name, role, email, phone, photo, facebook, linkedin } = Astro.props;
     </div>
 
     <!-- Reverso -->
-    <div class="absolute w-full h-full backface-hidden bg-[#023059] text-white rounded-xl shadow-lg p-4 transform rotate-y-180 flex flex-col justify-center items-center">
-      <p class="mb-2">✉️ {email}</p>
-      <p class="mb-2">📞 {phone}</p>
-      <div class="flex space-x-4 mt-4">
-        <a href={facebook}><img src="/facebook.svg" class="w-6 h-6" /></a>
-        <a href={linkedin}><img src="/linkedin.svg" class="w-6 h-6" /></a>
-      </div>
-    </div>
+<div class="absolute w-full h-full backface-hidden bg-[#023059] text-white rounded-xl shadow-lg p-4 transform rotate-y-180 flex flex-col justify-center items-center">
+  {biografia && (
+    <p class="mb-2 text-justify">{biografia}</p>
+  )}
+  {email && (
+    <p class="mb-2">✉️ Correo Electrónico: {email}</p>
+  )}
+
+  {phone && (
+    <p class="mb-2">📞 Celular: {phone}</p>
+  )}
+</div>
   </div>
 </div>
 
