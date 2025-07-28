@@ -11,6 +11,18 @@ import { db, News, Usuarios } from 'astro:db';
 const noticiasAll = await db.select().from(News);
 
 const noticiasSisInf = noticiasAll.filter((noticia) => noticia.userId === 3);
+
+//carrusell
+const modules = import.meta.glob('../Image/FilArt/*.{png,jpg,jpeg,gif}', { eager: true });
+
+const images = Object.values(modules)
+  .map(mod => {
+    if (typeof mod === 'string') return { src: mod };
+    if (mod && typeof mod === 'object' && 'default' in mod) return mod.default;
+    if (mod && typeof mod === 'object' && 'src' in mod) return mod;
+    return null;
+  })
+  .filter(Boolean);
 ---
 
 
@@ -43,7 +55,7 @@ const noticiasSisInf = noticiasAll.filter((noticia) => noticia.userId === 3);
             </p>            
           </div>
           <div class="w-2/5 flex-none ">
-            <Carousel ></Carousel>
+             <Carousel images={images} /></Carousel>
           </div> 
         </div>
 
@@ -101,7 +113,7 @@ const noticiasSisInf = noticiasAll.filter((noticia) => noticia.userId === 3);
             biografia=""
             email=""
             phone=""
-            photo="src/Image/Im_Inicio/"
+            photo=""
 
           />
           <FlipCard 
@@ -110,7 +122,7 @@ const noticiasSisInf = noticiasAll.filter((noticia) => noticia.userId === 3);
             biografia=""
             email=""
             phone="+591 71857038"
-            photo="src/Image/Im_Inicio/Osce.jpg"
+            photo=""
 
           />                     
         </div>
