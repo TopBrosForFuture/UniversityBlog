@@ -10,19 +10,14 @@ import { db, News, Usuarios } from 'astro:db';
 
 const items = [
   {
-    img: '/src/Image/SocSISinf/Logo_carrera1.png',
-    text: 'Carrera de Ing. de Sistemas',
+    img: '/src/Image/SocCiv/Logo_carrera1.png',
+    text: 'Carrera de Ing. Civil',
     text_URL: 'https://portal2.sistemas.edu.bo/',
   },
   {
-    img: '/src/Image/SocSISinf/Logo_carrera2.png',
-    text: 'Carrera de Ing. Informática',
+    img: '/src/Image/SocCiv/Logo_Soc.png',
+    text: 'So.C.E.I.C.',
     text_URL: 'https://portal2.sistemas.edu.bo/',
-  },
-  {
-    img: '/src/Image/SocSISinf/Logo_Soc.png',
-    text: 'SoCiE-ISII',
-    text_URL: 'https://www.facebook.com/SOCIEISII',
   },
 ];
 // Obtener noticias de SisInf desde la base de datos
@@ -33,41 +28,37 @@ const noticiasSisInf = noticiasAll.filter((noticia) => noticia.userId === 3);
 ---
 
 <Layout
-  title="SOCEI-ISII"
+  title="So.C.E.I.C."
   description="Bienvenido a mi aplicación construida con Astro y las mejores prácticas de desarrollo web"
 >
   <!-- Hero Section -->
-  <section class="bg-gradient-to-r from-blue-200 to-indigo-50 py-20">
+  <section class="bg-gradient-to-r from-blue-600 to-indigo-50 py-20">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center">
         <div class="flex justify-between items-center">
           <!-- Logo Izquierdo -->
           <img src="/src/Image/UTO.png" alt="Logo izquierdo" class="w-30 h-auto" />
           <h1 class="text-4xl md:text-4xl font-bold text-gray-900 mb-6">
-            <span style="color:#023059"
-              >Sociedad Científica de Estudiantes de<br /> Ingeniería de Sistemas e Ingeniería Informática</span
-            >
+            <span style="color:#C6CBD1" class="font-bold drop-shadow-[2px_2px_0px_black]">
+              Sociedad Científica de Estudiantes de<br /> Ingeniería Civil
+            </span>
           </h1>
           <!-- Logo derecho -->
           <img src="/src/Image/FNI.png" alt="Logo derecho" class="w-30 h-auto" />
         </div>
         <div class="flex gap-8 py-10">
           <div class="w-1/2 flex-none">
-            <h4 class="text-5xl text-[#177DA6] font-bold text-justify px-4 mb-4">
+            <h4 class="text-5xl text-[#C6CBD1] font-bold text-justify px-4 mb-4 drop-shadow-[2px_2px_0px_black]">
               Nuestra Historia
             </h4>
-            <p class="text-xl text-[#177DA6] text-justify px-4 leading-relaxed">
-              Un viernes 26 de mayo de 2017, un grupo de estudiantes de la carrera de Ing. de
-              Sistemas e Ing. Informática se reunió en ambientes de la carrera con el fin de crear
-              una sociedad que pueda contribuir al desarrollo profesional y personal de los
-              estudiantes y poder promover el desarrollo de la investigación científica. En aquel
-              entonces, el asesor de la sociedad era el M.Sc. Ing. Carlos Balderrama Vásquez,
-              gracias al entusiasmo del ingeniero podemos contar con una sociedad científica en la
-              carrera que pertenecemos.
+            <p class="text-xl text-[#C6CBD1] text-justify px-4 leading-relaxed font-bold drop-shadow-[2px_2px_0px_black]">
+              La SOCIEDAD CIENTIFICA DE ESTUDIANTES DE INGENIERÍA CIVIL 
+              (So.C.E.I.C.) fué fundada el 24 de Marzo de 2018 y es acreditada bajo 
+              el Honorable Consejo Universitario.
             </p>
           </div>
           <div class="w-1/2 flex-none">
-            <ImageFocusGallery items={items} textColor="text-[#0A253E]" columnsPerRow={3}/>
+            <ImageFocusGallery items={items} textColor="text-[#C6CBD1] font-bold drop-shadow-[2px_2px_0px_black]" columnsPerRow={2}/>
           </div>
         </div>
       </div>
@@ -87,34 +78,57 @@ const noticiasSisInf = noticiasAll.filter((noticia) => noticia.userId === 3);
         <h2 class="text-3xl font-bold text-gray-900 mb-4">Nuestra Directiva</h2>
         <div class="flex flex-wrap justify-center gap-6">
           <FlipCard
-            name="Univ. LAIZ ARACELY CHURA CHOQUE "
-            role="Presidente de la Sociedad Científica SoCiE-ISII"
-            email="laiz.chura@sistemas.edu.bo"
-            phone="+591 64759552"
-            photo="/src/Image/SocSISinf/Presi.jpeg"
+            name="Univ. Rocha Zubieta Karen Soledad"
+            role="Presidente de la Sociedad Científica So.C.E.I.C."
+            email="Soledad24fenix@gmail.com"
+            phone="+591 68298255"
+            photo="/src/Image/SocCiv/Presi.jpeg"
           />
           <FlipCard
-            name="Univ. Derlis Josué Tintares Choque"
-            role="Vicepresidente de la Sociedad Científica SoCiE-ISII"
-            email="derlis.tintares@sistemas.edu.bo"
-            phone="+591 63141914"
-            photo="/src/Image/SocSISinf/Vice.jpeg"
+            name="Univ. Paqui Huayllas Nelson Gustavo"
+            role="Vicepresidente de la Sociedad Científica So.C.E.I.C."
+            email="nelsonpaqui@gmail.com"
+            phone="+591 77147456"
+            photo="/src/Image/SocCiv/Vice.jpeg"
           />
           <FlipCard
-            name="Univ. José Daniel García Escobar"
-            role="Secretario General de la Sociedad Científica SoCiE-ISII"
-            email="jose.garcia@sistemas.edu.bo"
-            phone="+591 75715664"
-            photo="/src/Image/SocSISinf/General.jpg"
+            name="Univ. Lia Veronica Alicia "
+            role="Secretaria General de la Sociedad Científica So.C.E.I.C."
+            email="Liaveronica49@gmail.com"
+            phone="+591 683999001"
+            photo="/src/Image/SocCiv/General.jpeg"
 
           />
           <FlipCard
-            name="Univ. Madelaine Melanie Caro Coca"
-            role="Secretaria de Actas de la Sociedad Científica SoCiE-ISII"
-            email="madelainecaro.11.02@gmail.com"
-            phone="+591 68322386"
-            photo="/src/Image/SocSISinf/Actas.jpeg"
-            
+            name="Univ. Gomez Garcia Vargas Tatiana Katherin "
+            role="Secretaria de Hacienda de la Sociedad Científica So.C.E.I.C."
+            email="tatykggv@gmail.com"
+            phone="+591 75411306"
+            photo="/src/Image/SocCiv/Hacienda.jpeg"
+          />
+          <FlipCard
+            name="Univ. Aranibar Agreda Mauricio Benjamin"
+            role="Secretario de Difusión de la Sociedad Científica So.C.E.I.C."
+            email="agredamauricio7@gmail.com"
+            phone="+591 74840219"
+            photo="/src/Image/SocCiv/Difusion.jpeg"
+
+          />
+          <FlipCard
+            name="Univ. Barreta Villca Diego Raul"
+            role="Secretario de Actas de la Sociedad Científica So.C.E.I.C."
+            email="diegobarretavillca@gmail.com"
+            phone="+591 70414217"
+            photo="/src/Image/SocCiv/Actas.jpeg"
+
+          />
+          <FlipCard
+            name="Univ. Caceres Troncozo Anahi Yashira"
+            role="Vocal de la Sociedad Científica So.C.E.I.C."
+            email="caceresanahi778@gmail.com"
+            phone="+591 71850776"
+            photo="/src/Image/SocCiv/Vocal.jpeg"
+
           />
         </div>
       </div>
@@ -128,10 +142,9 @@ const noticiasSisInf = noticiasAll.filter((noticia) => noticia.userId === 3);
             <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-purple-300">
               <h3 class="text-2xl font-semibold text-purple-700 mb-4">Nuestra Misión</h3>
               <p class="text-gray-700 leading-relaxed text-justify">
-                La SOCIEDAD CIENTÍFICA DE  ESTUDIANTES DE INGENIERÍA DE SISTEMAS E INGENIERÍA INFORMÁTICA (SoCiE-ISII.) 
-                es una organización creada para incentivar a la investigación científica dentro de
-                 la carrera de Ingeniería de Sistemas e Ingeniería Informática, fomentando la participación activa 
-                 de los estudiantes en temas que ayuden en la enseñanza- aprendizaje.
+                La SOCIEDAD CIENTIFICA DE ESTUDIANTES DE INGENIERIA CIVIL tiene la misión de desarrollar y 
+                producir investigación científica-tecnológica en beneficio y progreso de la sociedad, e 
+                interactuar con la comunidad estudiantil.
               </p>
             </div>
             
@@ -139,11 +152,11 @@ const noticiasSisInf = noticiasAll.filter((noticia) => noticia.userId === 3);
             <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-purple-300">
               <h3 class="text-2xl font-semibold text-purple-700 mb-4">Nuestra Visión</h3>
               <p class="text-gray-700 leading-relaxed text-justify">
-                La SOCIEDAD CIENTÍFICA DE  ESTUDIANTES DE INGENIERÍA DE SISTEMAS E INGENIERÍA INFORMÁTICA (SoCiE-ISII.), 
-                será una entidad que refleje una cultura de investigación y planificación formando jóvenes con ideas 
-                innovadoras, socialmente comprometida y solidaria con plena participación de sus miembros, considerada 
-                la cuna de la ciencia dentro la Carrera de Sistemas e Informática, sirviendo de modelo a través del 
-                cumplimiento de sus principios.
+                La SOCIEDAD CIENTIFICA DE ESTUDIANTES DE INGENIERIA CIVIL, busca motivar una cultura de 
+                investigación y planificación de manera que sea competitiva a nivel nacional e internacional, 
+                llegando a 
+                formar líderes del mañana con ideas innovadoras, comprometidos con el desarrollo del país, 
+                sirviendo de modelo a través del cumplimiento de sus principios. 
               </p>
             </div>
 

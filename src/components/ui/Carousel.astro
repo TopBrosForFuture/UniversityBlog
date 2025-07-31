@@ -1,31 +1,32 @@
 ---
-const modules = import.meta.glob('../../Image/FilArt/*.{png,jpg,jpeg,gif}', { eager: true });
+// Recibir las imágenes como props con valor por defecto
+const { images = [] } = Astro.props;
 
-const images = Object.values(modules)
-  .map(mod => {
-    if (typeof mod === 'string') return { src: mod };
-    if (mod && typeof mod === 'object' && 'default' in mod) return mod.default;
-    if (mod && typeof mod === 'object' && 'src' in mod) return mod;
-    return null;
-  })
-  .filter(Boolean);
+// Validar que images sea un array
+const validImages = Array.isArray(images) ? images : [];
 ---
 
 <div class="w-full max-w-[700px] overflow-hidden rounded-xl shadow-lg mx-auto bg-white">
-  <div
-    id="carousel"
-    class="flex transition-transform duration-1000 ease-in-out"
-  >
-    {images.map((img, i) => (
-      <div class="w-full flex-shrink-0 rounded-xl p-2 box-border  ">
-        <img
-          src= {img.src}
-          alt={`Imagen ${i + 1}`}
-          class="w-full h-[300px] object-contain rounded-xl  "
-        />
-      </div>
-    ))}
-  </div>
+  {validImages.length > 0 ? (
+    <div
+      id="carousel"
+      class="flex transition-transform duration-1000 ease-in-out"
+    >
+      {validImages.map((img, i) => (
+        <div class="w-full flex-shrink-0 rounded-xl p-2 box-border">
+          <img
+            src={img.src}
+            alt={`Imagen ${i + 1}`}
+            class="w-full h-[300px] object-contain rounded-xl"
+          />
+        </div>
+      ))}
+    </div>
+  ) : (
+    <div class="w-full h-[300px] flex items-center justify-center text-gray-500">
+      No hay imágenes para mostrar
+    </div>
+  )}
 </div>
 
 

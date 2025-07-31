@@ -10,22 +10,17 @@ import { db, News, Usuarios } from 'astro:db';
 
 const items = [
   {
-    img: '/src/Image/SocSISinf/Logo_carrera1.png',
-    text: 'Carrera de Ing. de Sistemas',
-    text_URL: 'https://portal2.sistemas.edu.bo/',
+    img: '/src/Image/SocMec/Logo_carrera1.png',
+    text: 'Carrera de Ing. Mecánica Electromecanica Mecatrónica',
+    text_URL: 'https://mecanica.fni.uto.edu.bo/ingenieria-mecatronica/',
   },
   {
-    img: '/src/Image/SocSISinf/Logo_carrera2.png',
-    text: 'Carrera de Ing. Informática',
-    text_URL: 'https://portal2.sistemas.edu.bo/',
-  },
-  {
-    img: '/src/Image/SocSISinf/Logo_Soc.png',
-    text: 'SoCiE-ISII',
-    text_URL: 'https://www.facebook.com/SOCIEISII',
+    img: '/src/Image/SocMec/Logo_Soc3.png',
+    text: 'COM',
+    text_URL: '/sociedades/COM',
   },
 ];
-// Obtener noticias de SisInf desde la base de datos
+// Obtener noticias de la base de datos
 const noticiasAll = await db.select().from(News);
 
 const noticiasSisInf = noticiasAll.filter((noticia) => noticia.userId === 3);
@@ -33,41 +28,52 @@ const noticiasSisInf = noticiasAll.filter((noticia) => noticia.userId === 3);
 ---
 
 <Layout
-  title="SOCEI-ISII"
+  title="SCEIMEM - COM"
   description="Bienvenido a mi aplicación construida con Astro y las mejores prácticas de desarrollo web"
 >
   <!-- Hero Section -->
-  <section class="bg-gradient-to-r from-blue-200 to-indigo-50 py-20">
+  <section class="bg-gradient-to-r from-red-500 to-indigo-50 py-20">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center">
         <div class="flex justify-between items-center">
           <!-- Logo Izquierdo -->
           <img src="/src/Image/UTO.png" alt="Logo izquierdo" class="w-30 h-auto" />
           <h1 class="text-4xl md:text-4xl font-bold text-gray-900 mb-6">
-            <span style="color:#023059"
-              >Sociedad Científica de Estudiantes de<br /> Ingeniería de Sistemas e Ingeniería Informática</span
-            >
+            <span style="color:#000000">
+                CLUB ORURO MECATRONICA <br /> COM</span>
           </h1>
           <!-- Logo derecho -->
           <img src="/src/Image/FNI.png" alt="Logo derecho" class="w-30 h-auto" />
         </div>
-        <div class="flex gap-8 py-10">
+        <div class="flex gap-8 py-10 text-xl text-[#177DA6] text-justify px-4 leading-relaxed">
+          <div class="w-1/2 flex-none space-y-6">
+                <h4 class="text-5xl text-[#333132] font-bold text-justify px-4 mb-4">
+                    Nuestra Historia
+                </h4>
+                <p class="text-xl text-[#333132] text-justify px-4 leading-relaxed ">
+                    El <strong>Club de Mecatrónica Oruro</strong> fue fundado el <strong>7 de mayo de 2015</strong> como una institución 
+                    académica sin fines de lucro, impulsada por el docente <strong>Msc. Ing. Miguel A. Ruiz Orellana</strong> y 
+                    los estudiantes <strong>Univ. José A. Sillerico Suárez</strong> y <strong>Univ. Rodolfo Tapia Ramírez</strong>, 
+                    con la aprobación del director de Carrera de Ingeniería Mecánica Electromecánica <strong>Dpl. Ing. Olker Maldonado Uria</strong> el cual se encuentra de acuerdo a las normas vigentes de la Universidad 
+                    Técnica de Oruro.
+                </p>
+                <p class="text-xl text-[#333132] text-justify px-4 leading-relaxed mt-4">
+                    El objetivo principal del club es fomentar, estimular e impulsar el desarrollo de la
+                     mecatrónica en todas sus áreas de aplicación. Se busca difundir 
+                     resultados de investigaciones, promover la formación y el perfeccionamiento del personal 
+                     investigador, así como garantizar la calidad científica y profesional de las actividades 
+                     mecatrónicas. También se fomenta el intercambio de experiencias entre estudiantes, docentes 
+                     y profesionales
+                </p>
+                <p class="text-xl text-[#333132] text-justify px-4 leading-relaxed mt-4 ">
+                    El club también organiza congresos, seminarios, cursos de formación y promueve la publicación
+                     de materiales educativos. Está abierto a cualquier persona con interés en la mecatrónica, 
+                     sin importar la nacionalidad, siempre que tenga la voluntad de contribuir activamente.
+                </p>
+            </div>
+
           <div class="w-1/2 flex-none">
-            <h4 class="text-5xl text-[#177DA6] font-bold text-justify px-4 mb-4">
-              Nuestra Historia
-            </h4>
-            <p class="text-xl text-[#177DA6] text-justify px-4 leading-relaxed">
-              Un viernes 26 de mayo de 2017, un grupo de estudiantes de la carrera de Ing. de
-              Sistemas e Ing. Informática se reunió en ambientes de la carrera con el fin de crear
-              una sociedad que pueda contribuir al desarrollo profesional y personal de los
-              estudiantes y poder promover el desarrollo de la investigación científica. En aquel
-              entonces, el asesor de la sociedad era el M.Sc. Ing. Carlos Balderrama Vásquez,
-              gracias al entusiasmo del ingeniero podemos contar con una sociedad científica en la
-              carrera que pertenecemos.
-            </p>
-          </div>
-          <div class="w-1/2 flex-none">
-            <ImageFocusGallery items={items} textColor="text-[#0A253E]" columnsPerRow={3}/>
+            <ImageFocusGallery items={items} textColor="text-[#000000]" columnsPerRow={2}/>            
           </div>
         </div>
       </div>
@@ -87,33 +93,41 @@ const noticiasSisInf = noticiasAll.filter((noticia) => noticia.userId === 3);
         <h2 class="text-3xl font-bold text-gray-900 mb-4">Nuestra Directiva</h2>
         <div class="flex flex-wrap justify-center gap-6">
           <FlipCard
-            name="Univ. LAIZ ARACELY CHURA CHOQUE "
-            role="Presidente de la Sociedad Científica SoCiE-ISII"
-            email="laiz.chura@sistemas.edu.bo"
-            phone="+591 64759552"
-            photo="/src/Image/SocSISinf/Presi.jpeg"
+            name="Univ. Mamani Cossio Fabricio Gabriel "
+            role="Presidente de la COM"
+            email=""
+            phone=""
+            photo=""
           />
           <FlipCard
-            name="Univ. Derlis Josué Tintares Choque"
-            role="Vicepresidente de la Sociedad Científica SoCiE-ISII"
-            email="derlis.tintares@sistemas.edu.bo"
-            phone="+591 63141914"
-            photo="/src/Image/SocSISinf/Vice.jpeg"
+            name="Univ. Davila Olazo Adriana "
+            role="Unidad De Finanzas de la COM"
+            email=""
+            phone=""
+            photo=""
           />
           <FlipCard
-            name="Univ. José Daniel García Escobar"
-            role="Secretario General de la Sociedad Científica SoCiE-ISII"
-            email="jose.garcia@sistemas.edu.bo"
-            phone="+591 75715664"
-            photo="/src/Image/SocSISinf/General.jpg"
+            name="Univ. Javier Quispe Andres Abraham"
+            role="Unidad De Documentación de la COM"
+            email=""
+            phone=""
+            photo=""
 
           />
           <FlipCard
-            name="Univ. Madelaine Melanie Caro Coca"
-            role="Secretaria de Actas de la Sociedad Científica SoCiE-ISII"
-            email="madelainecaro.11.02@gmail.com"
-            phone="+591 68322386"
-            photo="/src/Image/SocSISinf/Actas.jpeg"
+            name="Univ. Puña Canaviri Gabriela Katherine"
+            role="Unidad De Logística de la COM"
+            email=""
+            phone=""
+            photo=""
+            
+          />
+          <FlipCard
+            name="Univ. Univ. Quinto Chino Ronald"
+            role="Unidad De Proyectos de la COM"
+            email=""
+            phone=""
+            photo=""
             
           />
         </div>
@@ -128,10 +142,26 @@ const noticiasSisInf = noticiasAll.filter((noticia) => noticia.userId === 3);
             <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-purple-300">
               <h3 class="text-2xl font-semibold text-purple-700 mb-4">Nuestra Misión</h3>
               <p class="text-gray-700 leading-relaxed text-justify">
-                La SOCIEDAD CIENTÍFICA DE  ESTUDIANTES DE INGENIERÍA DE SISTEMAS E INGENIERÍA INFORMÁTICA (SoCiE-ISII.) 
-                es una organización creada para incentivar a la investigación científica dentro de
-                 la carrera de Ingeniería de Sistemas e Ingeniería Informática, fomentando la participación activa 
-                 de los estudiantes en temas que ayuden en la enseñanza- aprendizaje.
+                Impulsar el desarrollo de proyectos de investigación científica y tecnológica en 
+                las áreas de Ingeniería Mecánica, Electromecánica y Mecatrónica, fomentando la 
+                participación activa de estudiantes en la generación de conocimiento y soluciones 
+                aplicadas.
+              </p>
+              <p class="text-gray-700 leading-relaxed text-justify">
+                La SCEIMEM es una sociedad científica estudiantil activa e independiente que no 
+                solo administra, sino que genera y ejecuta actividades y proyectos propios, con o 
+                sin la participación de sus subgrupos. Sirve como una plataforma abierta para la creación y 
+                articulación de diversos subgrupos de investigación, los cuales funcionan como unidades 
+                complementarias y temáticas.
+              </p>
+              <p class="text-gray-700 leading-relaxed text-justify">
+                Todos los integrantes de los subgrupos deben ser miembros activos de la SCEIMEM, aunque no 
+                todos los socios de la SCEIMEM pertenezcan necesariamente a un subgrupo específico.
+              </p>
+              <p class="text-gray-700 leading-relaxed text-justify">
+                La sociedad se rige bajo el cumplimiento riguroso de las normas y requisitos establecidos por 
+                la DICyT, DPIC y otras instancias institucionales, garantizando la legalidad, la calidad y la 
+                responsabilidad de sus actividades y producciones científicas.
               </p>
             </div>
             
@@ -139,11 +169,19 @@ const noticiasSisInf = noticiasAll.filter((noticia) => noticia.userId === 3);
             <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-purple-300">
               <h3 class="text-2xl font-semibold text-purple-700 mb-4">Nuestra Visión</h3>
               <p class="text-gray-700 leading-relaxed text-justify">
-                La SOCIEDAD CIENTÍFICA DE  ESTUDIANTES DE INGENIERÍA DE SISTEMAS E INGENIERÍA INFORMÁTICA (SoCiE-ISII.), 
-                será una entidad que refleje una cultura de investigación y planificación formando jóvenes con ideas 
-                innovadoras, socialmente comprometida y solidaria con plena participación de sus miembros, considerada 
-                la cuna de la ciencia dentro la Carrera de Sistemas e Informática, sirviendo de modelo a través del 
-                cumplimiento de sus principios.
+                Consolidarse como una sociedad científica líder y dinámica, reconocida por su excelencia 
+                en la investigación estudiantil, su capacidad organizativa, su independencia operativa y su 
+                impacto en la comunidad universitaria y la sociedad.
+              </p>
+              <p class="text-gray-700 leading-relaxed text-justify">
+                La SCEIMEM busca albergar y fortalecer múltiples líneas de investigación a través de subgrupos 
+                bien estructurados, sin perder su capacidad de generar iniciativas propias como sociedad activa.
+              </p>
+              <p class="text-gray-700 leading-relaxed text-justify">
+                Su modelo organizativo fomenta la innovación, el trabajo colaborativo y la formación integral de 
+                futuros profesionales comprometidos con la ciencia, la tecnología y el desarrollo del país. A 
+                través de esta estructura, la SCEIMEM aspira a ser un referente institucional, capaz de gestionar y 
+                ejecutar proyectos de alto nivel, tanto en coordinación con subgrupos como de forma autónoma.
               </p>
             </div>
 
